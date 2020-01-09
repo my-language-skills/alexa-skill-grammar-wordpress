@@ -1,0 +1,242 @@
+.hover_img a { position:relative; text-decoration: underline;}
+.hover_img a span { position:absolute; display:none; z-index:99; }
+.hover_img a:hover span { display:block;  transform: translate(90px,-245px);}
+h1#title
+{
+    text-align: center;
+    margin-bottom:3%;
+}
+h1#title2
+{
+    text-align: center;
+    margin-bottom:3%;
+    margin-top:5%;
+}
+h2#special
+{
+    max-width:100%;
+    float:none;
+    text-align: center;
+}
+/* textarea
+{
+    resize:vertical;
+    width: 40em;
+    max-width:100%;
+    height: auto;
+    margin-top: 5px;
+    margin-bottom:5px;
+    height:5em;
+    position: relative; 
+} */
+.input-section
+{
+    width: 98%;
+    max-height: 8em;
+    height:4em;
+    margin: 1%;
+    float:center;
+    text-align: left;
+    margin-bottom: 2%;
+}
+.input-marker
+{
+    width:45%;
+    max-height: 8em;
+    height:4em;
+    margin: 0%;
+    margin-left:2%;
+    margin-right:0%;
+    float:right;
+    text-align: left;
+}
+.input-field, .input-field2
+{
+    width: fit-content;
+    max-height: 8em;
+    margin:0%,0%,0%,0%;
+    position:inherit;
+    float:none;
+    text-align: center;
+}
+.input-field2
+{
+    text-align: left;
+    width:80%;
+}
+
+label
+{
+    font-weight: bold;
+    float:left; 
+}
+
+/* .hovermsg
+{
+    visibility:hidden;
+    width: 100px;
+    background-color:rgb(243, 240, 240);
+    color: rgb(95, 93, 92);
+    text-align: center;
+    border-radius: 6px;
+    padding:5px 0;
+    position: absolute;
+    z-index:100;
+    transform: translate(-200px,10px);
+} */
+
+.alexa-content,.alexa-text,.alexa-conflictions
+{
+    width:98%;
+    margin-left:1%;
+    margin-right:1%; 
+    max-height:8em;
+    min-height:4em;
+}
+
+.alexa-label
+{
+    margin-left:1%;
+    margin-top:1%;
+}
+
+.column-sections
+{
+    float:left;
+    text-align: center;
+    margin-bottom:2%;
+    width:95%;
+}
+.column-section2
+{
+    float:left;
+    text-align: center;
+    width:60%;
+    margin-bottom:2%;
+}
+
+.column-translate
+{
+    float:left;
+    text-align: center;
+    width:60%;
+}
+.column-char
+{
+    float:left;
+    text-align: center;
+    width:30%;
+}
+.column-translate-buttons
+{
+    float:none;
+    text-align:center;
+    margin-left:2%;
+    margin-right:2%;
+    margin-top:4%;
+}
+
+.column-header-buttons
+{
+    text-align:right;
+    margin-right:2%;
+}
+
+.container
+{
+    width:95%;
+    background-color: rgba(251, 244, 244, 0.721);
+    float:center;
+    padding:1em;
+    margin:1%;
+    border: groove 2px;
+    border-color: rgba(251, 244, 244, 0.449);
+    border-radius: 4px;
+}
+input[type=text]
+{
+    border-color:rgba(212, 210, 210, 0.68);
+    margin-right:1%;
+}
+.container-fields
+{
+    width:94%;
+    margin:1%;
+    padding-left:1%;
+    padding-right: 2%;
+}
+.container-admin
+{
+    width:94%;
+    border: solid 4px;
+    margin-top:1%;
+    border-color: rgba(255, 255, 255, 0.918);
+    border-radius:4px;
+    height: fit-content;
+    padding:2%;
+    padding-top:0%;
+    background-color: rgb(255, 255, 255);
+}
+
+  /* Clear floats after the columns */
+  .row::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+#block_btn,#export,#import_one,#translate_one,#update,#translate,#delete_row,#block_all,#add_new_char,#transl_update,#save_sections,#show_url
+{
+    
+    
+    color: #000;
+    background: rgba(251, 244, 244, 0.884);
+    border-width: 0.4px;
+    max-width: fit-content;
+    border-color: black;
+    border-radius: 5px;
+    display: inline-block;
+    opacity: 0.6;
+    text-align: left;
+    padding: 0.5em 3em 0.5em 3em;
+    margin: 0.1em;
+}
+
+#import_one:hover,#translate_one:hover,#block_btn:hover,#import_one:hover,#drop-down:hover,#export:hover,#translate_one:hover,#show_url:hover,#update:hover,#delete_row:hover,#translate:hover,#add_new_char:hover,#transl_update:hover,#block_all:hover,#save_sections:hover
+{
+    opacity:0.8;
+    background: rgba(251, 244, 244, 0.796);
+}
+#import_one,#translate_one,#export,#import_one,#translate_one,#block_all,#update,#translate,#add_new_char,#transl_update,#show_url
+{
+    margin-top:0em;
+    padding:0.5em 1em 0.5em 1em;
+    height:fit-content;
+    max-width: fit-content;
+    text-align: center;
+
+}
+#drop-down
+{
+    text-align: center;
+    height: fit-content;
+    width: fit-content;
+    font-size: 12px;
+    padding: 0%;
+    color: #000;
+    background: rgba(251, 244, 244, 0.884);
+    border-width: 0px;
+}
+#delete_row
+{
+    text-align: center;
+    padding:0.5em 1em 0.5em 1em;
+    margin-top: 2%;
+
+    
+}
+#import_one,#translate_one
+{
+  margin-top:1%;
+  margin-bottom: 2%;
+}
