@@ -11,14 +11,13 @@ class Chapters
 {
     public function __construct()
     {
-        add_action('export_book',array($this,'export_book_to_JSON'));
+        add_action('amb_export_book',array($this,'amb_export_book_to_JSON'));
     }
-    public function export_book_to_JSON()
+    public function amb_export_book_to_JSON()
     {
         //every position is a different chapter with special fields...
         $json_content = array();
 
-        
         $ids=0;
         $chapter_names=array();
         $chapter_names_json;
@@ -36,52 +35,52 @@ class Chapters
             $post_id= get_the_ID();
             $post_title = get_the_title();
             
-            if (!(isset($_SESSION['chapter_title'])))
-                $_SESSION['chapter_title']=$post_title;
+            if (!(isset($_SESSION['amb_chapter_title'])))
+                $_SESSION['amb_chapter_title']=$post_title;
 
             $chapter_name=strtolower($post_title);
             $json_tmp = str_replace(' ','_',$post_title);
             $chapter_name_json=strtoupper($json_tmp);
+
             //Getting meta data from wp_db
-            $url_meta = get_post_meta( $post_id,'picture_url',true);
-            $basic_meta = get_post_meta($post_id,'basic_info',true);
-            $more_meta = get_post_meta($post_id,'more_info',true);
-            $example_meta = get_post_meta($post_id,'examples',true);
-            //if (!(empty($url_meta) || empty($basic_meta) || empty($more_meta)))
-            //{
-                //create arg array with chapter data for review before exportation
-                $args = array(
-                    'chapter_title' => $post_title,
-                    'basic_info'    => $basic_meta,
-                    'more_info'     => $more_meta,
-                    'examples'      => $example_meta,
-                    'post_id'       =>$post_id
-                );
-                array_push($all_args,$args);
-                array_push($urls,$url_meta);
-                
-                //$chapters[$ids]=array($chapter_name_json,$basic_meta,$more_meta,$example_meta);
-                //adding to the strings for the Json export final file.
-               
-                //New test method for export file
-                $new_entry = ["chapter_id" => $ids,"chapter_name" =>$chapter_name,"chapter_json" =>$chapter_name_json,"url" => $url_meta,"basic_info" =>$basic_meta,"more_info" =>$more_meta,"example"=>$example_meta];
-                $new_entry['basic_info'] = str_replace("'","APOSTROPHE",$new_entry['basic_info']);
-                $new_entry['more_info'] = str_replace("'","APOSTROPHE",$new_entry['more_info']);
-                $new_entry['example'] = str_replace("'","APOSTROPHE",$new_entry['example']);
+            $url_meta = get_post_meta( $post_id,'amb_picture_url',true);
+            $basic_meta = get_post_meta($post_id,'amb_basic_info',true);
+            $more_meta = get_post_meta($post_id,'amb_more_info',true);
+            $example_meta = get_post_meta($post_id,'amb_examples',true);
+
+            //create arg array with chapter data for review before exportation
+            $args = array(
+                'amb_chapter_title' => $post_title,
+                'amb_basic_info'    => $basic_meta,
+                'amb_more_info'     => $more_meta,
+                'amb_examples'      => $example_meta,
+                'amb_post_id'       =>$post_id
+            );
+            array_push($all_args,$args);
+            array_push($urls,$url_meta);
+            
+            
+            //adding the correct format to the information before the transformation
+            $new_entry = ["amb_chapter_id" => $ids,"amb_chapter_name" =>$chapter_name,"amb_chapter_json" =>$chapter_name_json,"amb_url" => $url_meta,"amb_basic_info" =>$basic_meta,"amb_more_info" =>$more_meta,"amb_example"=>$example_meta];
+            $new_entry['amb_basic_info'] = str_replace("'","APOSTROPHE",$new_entry['amb_basic_info']);
+            $new_entry['amb_more_info'] = str_replace("'","APOSTROPHE",$new_entry['amb_more_info']);
+            $new_entry['amb_example'] = str_replace("'","APOSTROPHE",$new_entry['amb_example']);
+
+            if (empty($new_entry['amb_basic_info']) || empty($new_entry['amb_more_info']) || empty($new_entry['amb_example']) )
+                echo '<script>console.log("skipped chapter: '.$new_entry['amb_chapter_id'].', not valid information");</script>';
+            else
                 array_push($json_content,$new_entry);
-               
-                $ids++;
-            //}
-            }
+            $ids++;
+        }
             if (count($all_args)>0)
                 {
                     do_action('add_display',$all_args);
-                    //do_action('add_display2');
                 }
            
             
             $temp = json_encode($json_content);
-            ?><input type='hidden' name='export_file' id='export_file' value='<?php echo $temp;?>' /> <?php
+            //sending the final string to admin_scripts to create the javascript content file.
+            ?><input type='hidden' name='amb_export_file' id='amb_export_file' value='<?php echo $temp;?>' /> <?php
             wp_reset_query();
     }
 }
