@@ -1,18 +1,18 @@
-.hover_img a { position:relative; text-decoration: underline;}
-.hover_img a span { position:absolute; display:none; z-index:99; }
-.hover_img a:hover span { display:block;  transform: translate(90px,-245px);}
-h1#title
+.amb_hover_img a { position:relative; text-decoration: underline;}
+.amb_hover_img a span { position:absolute; display:none; z-index:99; }
+.amb_hover_img a:hover span { display:block;  transform: translate(90px,-245px);}
+h1#amb_title
 {
     text-align: center;
     margin-bottom:3%;
 }
-h1#title2
+h1#amb_title2
 {
     text-align: center;
     margin-bottom:3%;
     margin-top:5%;
 }
-h2#special
+h2#amb_special
 {
     max-width:100%;
     float:none;
@@ -29,7 +29,7 @@ h2#special
     height:5em;
     position: relative; 
 } */
-.input-section
+.amb_input-section
 {
     width: 98%;
     max-height: 8em;
@@ -39,7 +39,7 @@ h2#special
     text-align: left;
     margin-bottom: 2%;
 }
-.input-marker
+.amb_input-marker
 {
     width:45%;
     max-height: 8em;
@@ -50,7 +50,7 @@ h2#special
     float:right;
     text-align: left;
 }
-.input-field, .input-field2
+.amb_input-field, .amb_input-field2
 {
     width: fit-content;
     max-height: 8em;
@@ -59,13 +59,13 @@ h2#special
     float:none;
     text-align: center;
 }
-.input-field2
+.amb_input-field2
 {
     text-align: left;
     width:80%;
 }
 
-label
+.amb_label
 {
     font-weight: bold;
     float:left; 
@@ -85,7 +85,7 @@ label
     transform: translate(-200px,10px);
 } */
 
-.alexa-content,.alexa-text,.alexa-conflictions
+.amb_alexa-content,.amb_alexa-text,.amb_alexa-conflictions
 {
     width:98%;
     margin-left:1%;
@@ -94,20 +94,20 @@ label
     min-height:4em;
 }
 
-.alexa-label
+.amb_alexa-label
 {
     margin-left:1%;
     margin-top:1%;
 }
 
-.column-sections
+.amb_column-sections
 {
     float:left;
     text-align: center;
     margin-bottom:2%;
     width:95%;
 }
-.column-section2
+.amb_column-section2
 {
     float:left;
     text-align: center;
@@ -115,19 +115,19 @@ label
     margin-bottom:2%;
 }
 
-.column-translate
+.amb_column-translate
 {
     float:left;
     text-align: center;
     width:60%;
 }
-.column-char
+.amb_column-char
 {
     float:left;
     text-align: center;
     width:30%;
 }
-.column-translate-buttons
+.amb_column-translate-buttons
 {
     float:none;
     text-align:center;
@@ -136,13 +136,13 @@ label
     margin-top:4%;
 }
 
-.column-header-buttons
+.amb_column-header-buttons
 {
     text-align:right;
     margin-right:2%;
 }
 
-.container
+.amb_container
 {
     width:95%;
     background-color: rgba(251, 244, 244, 0.721);
@@ -153,19 +153,19 @@ label
     border-color: rgba(251, 244, 244, 0.449);
     border-radius: 4px;
 }
-input[type=text]
+input.amb_input_text[type=text]
 {
     border-color:rgba(212, 210, 210, 0.68);
     margin-right:1%;
 }
-.container-fields
+.amb_container-fields
 {
     width:94%;
     margin:1%;
     padding-left:1%;
     padding-right: 2%;
 }
-.container-admin
+.amb_container-admin
 {
     width:94%;
     border: solid 4px;
@@ -179,13 +179,13 @@ input[type=text]
 }
 
   /* Clear floats after the columns */
-  .row::after {
+  .amb_row::after {
     content: "";
     display: table;
     clear: both;
   }
 
-#block_btn,#export,#import_one,#translate_one,#update,#translate,#delete_row,#block_all,#add_new_char,#transl_update,#save_sections,#show_url
+#amb_block_btn,#amb_export,#amb_import_one_basic_info,#amb_import_one_more_info,#amb_import_one_examples,#amb_translate_one_basic_info,#amb_translate_one_more_info,#amb_translate_one_examples,#amb_update,#amb_translate,#amb_delete_row,#amb_block_all,#amb_add_new_char,#amb_transl_update,#amb_save_sections,#amb_show_url
 {
     
     
@@ -202,12 +202,12 @@ input[type=text]
     margin: 0.1em;
 }
 
-#import_one:hover,#translate_one:hover,#block_btn:hover,#import_one:hover,#drop-down:hover,#export:hover,#translate_one:hover,#show_url:hover,#update:hover,#delete_row:hover,#translate:hover,#add_new_char:hover,#transl_update:hover,#block_all:hover,#save_sections:hover
+#amb_import_one_basic_info:hover,#amb_import_one_more_info:hover,#amb_import_one_examples:hover,#amb_translate_one_basic_info:hover,#amb_translate_one_more_info:hover,#amb_translate_one_examples:hover,#amb_block_btn:hover,#amb_drop-down_conflictions:hover,#amb_drop-down_basic_info:hover,#amb_drop-down_more_info:hover,#amb_drop-down_examples:hover,#amb_export:hover,#amb_show_url:hover,#amb_update:hover,#amb_delete_row:hover,#amb_translate:hover,#amb_add_new_char:hover,#amb_transl_update:hover,#amb_block_all:hover,#amb_save_sections:hover
 {
     opacity:0.8;
     background: rgba(251, 244, 244, 0.796);
 }
-#import_one,#translate_one,#export,#import_one,#translate_one,#block_all,#update,#translate,#add_new_char,#transl_update,#show_url
+#amb_import_one_basic_info,#amb_import_one_more_info,#amb_import_one_examples,#amb_translate_one_basic_info,#amb_translate_one_more_info,#amb_translate_one_examples,#amb_export,#amb_block_all,#amb_update,#amb_translate,#amb_add_new_char,#amb_transl_update,#amb_show_url
 {
     margin-top:0em;
     padding:0.5em 1em 0.5em 1em;
@@ -216,7 +216,7 @@ input[type=text]
     text-align: center;
 
 }
-#drop-down
+#amb_drop-down_basic_info,#amb_drop-down_more_info,#amb_drop-down_examples,#amb_drop-down_conflictions
 {
     text-align: center;
     height: fit-content;
@@ -227,7 +227,7 @@ input[type=text]
     background: rgba(251, 244, 244, 0.884);
     border-width: 0px;
 }
-#delete_row
+#amb_delete_row
 {
     text-align: center;
     padding:0.5em 1em 0.5em 1em;
@@ -235,7 +235,7 @@ input[type=text]
 
     
 }
-#import_one,#translate_one
+#amb_import_one_basic_info,#amb_import_one_more_info,#amb_import_one_examples,#amb_translate_one_basic_info,#amb_translate_one_more_info,#amb_translate_one_examples
 {
   margin-top:1%;
   margin-bottom: 2%;

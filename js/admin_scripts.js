@@ -1,8 +1,9 @@
-jQuery(function($)
+jQuery(function(jQuery)
 {
-    jQuery('#export').click(function()
+    //when export button clicked
+    jQuery('#amb_export').on("click",function()
     {
-        var hidden = jQuery("input#export_file").val();
+        var hidden = jQuery("input#amb_export_file").val();
         
         var file_output = "module.exports = \n{\n\tEN_US:\n\t{";
         var ids="\n\t\tIDS:\n\t\t[";
@@ -14,26 +15,26 @@ jQuery(function($)
         var file = JSON.parse(hidden);
         for (var i=0;i<file.length;i++)
         {
-            while(file[i].basic_info.includes("APOSTROPHE"))
+            while(file[i].amb_basic_info.includes("APOSTROPHE"))
             {   
-                file[i].basic_info = file[i].basic_info.replace("APOSTROPHE","\\'");
+                file[i].amb_basic_info = file[i].amb_basic_info.replace("APOSTROPHE","\\'");
             }
-            while(file[i].more_info.includes("APOSTROPHE"))
+            while(file[i].amb_more_info.includes("APOSTROPHE"))
             {   
-                file[i].more_info = file[i].more_info.replace("APOSTROPHE","\\'");
+                file[i].amb_more_info = file[i].amb_more_info.replace("APOSTROPHE","\\'");
             }
-            while(file[i].example.includes("APOSTROPHE"))
+            while(file[i].amb_example.includes("APOSTROPHE"))
             {   
-                file[i].example = file[i].example.replace("APOSTROPHE","\\'");
+                file[i].amb_example = file[i].amb_example.replace("APOSTROPHE","\\'");
             }
         }
         for (var i=0;i<file.length;i++)
         {
-            ids = ids+"\n\t\t\t{\n\t\t\t\tgrammatical_rule: '"+file[i].chapter_name+"',\n\t\t\t\tid: '"+file[i].chapter_id+"',\n\t\t\t},";
-            chapter_names = chapter_names+"\n\t\t\t'"+file[i].chapter_name+"',";
-            chapter_json = chapter_json+"\n\t\t\t'"+file[i].chapter_json+"',";
-            urls = urls + "\n\t\t\t{\n\t\t\t\tgrammatical_rule: '"+file[i].chapter_name+"',\n\t\t\t\turl: '"+file[i].url+"',\n\t\t\t},";
-            chapters_info = chapters_info + "\n\t\t"+file[i].chapter_json+":\n\t\t[\n\t\t\t{\n\t\t\t\ttitle: 'basic info',\n\t\t\t\tsub_text: '"+file[i].basic_info+"',\n\t\t\t},\n\t\t\t{\n\t\t\t\ttitle: 'more info',\n\t\t\t\tsub_text: '"+file[i].more_info+"',\n\t\t\t},\n\t\t\t{\n\t\t\t\ttitle: 'examples',\n\t\t\t\tsub_text: '"+file[i].example+"',\n\t\t\t}\n\t\t],";
+            ids = ids+"\n\t\t\t{\n\t\t\t\tgrammatical_rule: '"+file[i].amb_chapter_name+"',\n\t\t\t\tid: '"+file[i].amb_chapter_id+"',\n\t\t\t},";
+            chapter_names = chapter_names+"\n\t\t\t'"+file[i].amb_chapter_name+"',";
+            chapter_json = chapter_json+"\n\t\t\t'"+file[i].amb_chapter_json+"',";
+            urls = urls + "\n\t\t\t{\n\t\t\t\tgrammatical_rule: '"+file[i].amb_chapter_name+"',\n\t\t\t\turl: '"+file[i].amb_url+"',\n\t\t\t},";
+            chapters_info = chapters_info + "\n\t\t"+file[i].amb_chapter_json+":\n\t\t[\n\t\t\t{\n\t\t\t\ttitle: 'basic info',\n\t\t\t\tsub_text: '"+file[i].amb_basic_info+"',\n\t\t\t},\n\t\t\t{\n\t\t\t\ttitle: 'more info',\n\t\t\t\tsub_text: '"+file[i].amb_more_info+"',\n\t\t\t},\n\t\t\t{\n\t\t\t\ttitle: 'examples',\n\t\t\t\tsub_text: '"+file[i].amb_example+"',\n\t\t\t}\n\t\t],";
         }
         ids = ids.substring(0,ids.length-1)+"\n\t\t],";
         chapter_names = chapter_names.substring(0,chapter_names.length-1)+"\n\t\t],";
@@ -47,85 +48,87 @@ jQuery(function($)
         
         var downloadAnchor = document.createElement('a');
         downloadAnchor.setAttribute("href", dataStr);
-        downloadAnchor.setAttribute("download","content.json");
+        downloadAnchor.setAttribute("download","content.js");
         document.body.appendChild(downloadAnchor);
         downloadAnchor.click();
         downloadAnchor.remove();       
     });
-
-    jQuery('input#show_url').click(function()
+    //when hide pictures button clicked
+    jQuery('input#amb_show_url').on("click",function()
     {
-        var hidden_show = jQuery("input#show_picture");
+        var hidden_show = jQuery("input#amb_show_picture");
         var name;
+        //setting appropriate name to the option that will store the button feature and name
         if (hidden_show.val() == "" || hidden_show.val()=="Hide Pictures")
             name = "Unhide Pictures";
         else
             name = "Hide Pictures";
-        $.ajax({
+        jQuery.ajax({
             type:"POST",
             url:"?",
             success: function()
             {
-                jQuery("input#show_picture").val(name);
+                jQuery("input#amb_show_picture").val(name);
                 console.log("success");
-                document.getElementById("input-fields").submit();
+                document.getElementById("amb_input-fields").submit();
             },
         });
     });
-    
-    jQuery('input#add_new_char').click(function(e)
+    //when add new button clicked
+    jQuery('input#amb_add_new_char').on("click",function(e)
     {
-        var input = $("input#new_char").val();
+        var input = jQuery("input#amb_new_char").val();
         if (!input=="")
         {
-            $.ajax({
+            jQuery.ajax({
                 type: "POST",
                 url: "?",
                 success: function()
                 {
-                    $("input#new_char_hidden").val(input);
+                    jQuery("input#amb_new_char_hidden").val(input);
                     console.log("success");
-                    document.getElementById('input-fields').submit();
+                    document.getElementById('amb_input-fields').submit();
                 }
             });
         }
         else
             alert("Empty Field");
     });
-    
-    jQuery('input#block_all').click(function(e)
+    //when blocked all button clicked
+    jQuery('input#amb_block_all').on("click",function(e)
     {
-        var hidden_blocked = $("input#blocked");
+        var hidden_blocked = jQuery("input#amb_blocked");
         var name;
+        //setting appropriate name to the option that will store the button feature and name
         if (hidden_blocked.val() =="" || hidden_blocked.val()=="Block All Chapters")
          {   
             name = "Unblock All Chapters";
-            $("textarea.input-field2").attr('disabled',true);
-            $("delete_row").attr('disabled',true);
+            jQuery("textarea.amb_input-field2").attr('disabled',true);
+            jQuery("amb_delete_row").attr('disabled',true);
         }
         else
         {
             name= "Block All Chapters";
-            $("textarea.input-field2").attr('disabled',false);
-            $("delete_row").attr('disabled',false);
+            jQuery("textarea.amb_input-field2").attr('disabled',false);
+            jQuery("amb_delete_row").attr('disabled',false);
         }
-        $.ajax({
+        jQuery.ajax({
             type:"POST",
             url: "?",
             success: function()
             {
-                $("input#blocked").val(name);
+                jQuery("input#amb_blocked").val(name);
                 console.log("success");
-                $('input#block_all').val(name);
-                document.getElementById("input-fields").submit();
+                jQuery('input#amb_block_all').val(name);
+                document.getElementById("amb_input-fields").submit();
             }
         });
     });
-
-    jQuery('input#transl_update').click(function(e)
+    //when update Translations button clicked
+    jQuery('input#amb_transl_update').on("click",function(e)
     {
-        var new_input_fields = $("textarea.input-field2");
-        $.ajax({
+        var new_input_fields = jQuery("textarea.amb_input-field2");
+        jQuery.ajax({
             type:"POST",
             url:"?",
             success: function()
@@ -135,10 +138,10 @@ jQuery(function($)
                     {
                         new_values.push(new_input_fields[i].value);
                     }
-                $('#new_transaltion_value').val(new_values);
-                $("input#new_translation_hidden").val("ready");
+                jQuery('#amb_new_transaltion_value').val(new_values);
+                jQuery("input#amb_new_translation_hidden").val("ready");
                 console.log("done success"); 
-                document.getElementById('input-fields').submit();
+                document.getElementById('amb_input-fields').submit();
             },
             error: function()
             {
@@ -149,22 +152,22 @@ jQuery(function($)
     });
 
     //save button on begin and end sections
-    jQuery('input#save_sections').click(function()
+    jQuery('input#amb_save_sections').on("click",function()
     {
         //even markers are end and odd are begin..
-        var markers = $("textarea.input-marker");
-        var sections = $("textarea.input-section");
+        var markers = jQuery("textarea.amb_input-marker");
+        var sections = jQuery("textarea.amb_input-section");
         var final_values = [];
         for (var i=0;i<sections.length;i++)
-            final_values.push(sections[i].value);//,markers[i*2+1].value,markers[i*2].value)
-        $.ajax({
+            final_values.push(sections[i].value.substr(1,sections[i].value.length-2));//removes the "<" ">" characters before storing to database.
+        jQuery.ajax({
             type: "POST",
             url: "?",
             success: function()
             {
-                $("input#markers_update").val(final_values);
+                jQuery("#amb_markers_update").val(final_values);
                 console.log("success");
-                document.getElementById('section-fields').submit();
+                document.getElementById('amb_section-fields').submit();
             },
             error: function()
             {
@@ -173,16 +176,17 @@ jQuery(function($)
 
         });
     });
-    jQuery('input#delete_row').click(function()
+    //deleted a row
+    jQuery('input#amb_delete_row').on("click",function()
     {
-        var name=$(this).attr('name')+" ";
-        $.ajax({
+        var name=jQuery(this).attr('name')+" ";
+        jQuery.ajax({
             type:"POST",
             url:"?",
             success: function(){
-                $('#delete_translation').val(name);          
+                jQuery('#amb_delete_translation').val(name);          
                 console.log("done success"); 
-                document.getElementById('input-fields').submit();
+                document.getElementById('amb_input-fields').submit();
             }
         });
     });
