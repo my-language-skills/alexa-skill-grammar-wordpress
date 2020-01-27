@@ -181,8 +181,9 @@ input.amb_input_text[type=text]
   /* Clear floats after the columns */
   .amb_row::after {
     content: "";
-    display: table;
+    display: block;
     clear: both;
+    float: left;
   }
 
 #amb_block_btn,#amb_export,#amb_import_one_basic_info,#amb_import_one_more_info,#amb_import_one_examples,#amb_translate_one_basic_info,#amb_translate_one_more_info,#amb_translate_one_examples,#amb_update,#amb_translate,#amb_delete_row,#amb_block_all,#amb_add_new_char,#amb_transl_update,#amb_save_sections,#amb_show_url
@@ -207,7 +208,7 @@ input.amb_input_text[type=text]
     opacity:0.8;
     background: rgba(251, 244, 244, 0.796);
 }
-#amb_import_one_basic_info,#amb_import_one_more_info,#amb_import_one_examples,#amb_translate_one_basic_info,#amb_translate_one_more_info,#amb_translate_one_examples,#amb_export,#amb_block_all,#amb_update,#amb_translate,#amb_add_new_char,#amb_transl_update,#amb_show_url
+#amb_export,#amb_block_all,#amb_update,#amb_translate,#amb_add_new_char,#amb_transl_update,#amb_show_url
 {
     margin-top:0em;
     padding:0.5em 1em 0.5em 1em;
@@ -235,8 +236,15 @@ input.amb_input_text[type=text]
 
     
 }
+/* #amb_import_one_basic_info,#amb_import_one_more_info,#amb_import_one_examples,#amb_translate_one_basic_info,#amb_translate_one_more_info,#amb_translate_one_examples,*/
 #amb_import_one_basic_info,#amb_import_one_more_info,#amb_import_one_examples,#amb_translate_one_basic_info,#amb_translate_one_more_info,#amb_translate_one_examples
 {
   margin-top:1%;
   margin-bottom: 2%;
+  padding:0.5em 1em 0.5em 1em;
+  height:fit-content;
+  max-width: fit-content;
+  text-align: left;
+  display: inline-block;
+  position:static;
 }

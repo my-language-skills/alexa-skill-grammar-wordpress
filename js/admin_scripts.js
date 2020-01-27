@@ -11,10 +11,10 @@ jQuery(function(jQuery)
         var chapter_json ="\n\t\tCHAPTERS_NAMES_JSON:\n\t\t[";
         var urls="\n\t\tURLS:\n\t\t[";
         var chapters_info="";
-        
+        //after initial object attributes set.
         var file = JSON.parse(hidden);
         for (var i=0;i<file.length;i++)
-        {
+        {//looping through the information for all chapters. restructuring for alexa content.
             while(file[i].amb_basic_info.includes("APOSTROPHE"))
             {   
                 file[i].amb_basic_info = file[i].amb_basic_info.replace("APOSTROPHE","\\'");
@@ -29,13 +29,14 @@ jQuery(function(jQuery)
             }
         }
         for (var i=0;i<file.length;i++)
-        {
+        {//looping through chapters again. Setting the attributes and values in a text form.
             ids = ids+"\n\t\t\t{\n\t\t\t\tgrammatical_rule: '"+file[i].amb_chapter_name+"',\n\t\t\t\tid: '"+file[i].amb_chapter_id+"',\n\t\t\t},";
             chapter_names = chapter_names+"\n\t\t\t'"+file[i].amb_chapter_name+"',";
             chapter_json = chapter_json+"\n\t\t\t'"+file[i].amb_chapter_json+"',";
             urls = urls + "\n\t\t\t{\n\t\t\t\tgrammatical_rule: '"+file[i].amb_chapter_name+"',\n\t\t\t\turl: '"+file[i].amb_url+"',\n\t\t\t},";
             chapters_info = chapters_info + "\n\t\t"+file[i].amb_chapter_json+":\n\t\t[\n\t\t\t{\n\t\t\t\ttitle: 'basic info',\n\t\t\t\tsub_text: '"+file[i].amb_basic_info+"',\n\t\t\t},\n\t\t\t{\n\t\t\t\ttitle: 'more info',\n\t\t\t\tsub_text: '"+file[i].amb_more_info+"',\n\t\t\t},\n\t\t\t{\n\t\t\t\ttitle: 'examples',\n\t\t\t\tsub_text: '"+file[i].amb_example+"',\n\t\t\t}\n\t\t],";
         }
+        //adding the footer of the json file, in text form.
         ids = ids.substring(0,ids.length-1)+"\n\t\t],";
         chapter_names = chapter_names.substring(0,chapter_names.length-1)+"\n\t\t],";
         chapter_json = chapter_json.substring(0,chapter_json.length-1)+"\n\t\t],";
@@ -43,7 +44,7 @@ jQuery(function(jQuery)
         chapters_info = chapters_info.substring(0,chapters_info.length-1);
         file_output = file_output+ids+chapter_names+chapter_json+urls+chapters_info+"\n\t},\n}";
         
-
+        //custom code for creating the .js file and parsing the text form of information in  a way alexa reads.
         var dataStr = "data:text/js;charset=utf-8," +encodeURIComponent(file_output);
         
         var downloadAnchor = document.createElement('a');

@@ -16,3 +16,4 @@
 - Administrator must go first to Settings/Alexa-Input-Fields page to set the sections for importation.
 - All missing information or inappropriate setups will prompt an alert with corresponding help messages.
 - When adding the markups, the "<" and ">" characters are added automatically to disable any confusion and problems when storing and receiving from the database.
+- Current version creates the information in an English ("en_US") locale for the skill.
